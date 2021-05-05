@@ -1,0 +1,27 @@
+cc_library(
+    name = "rl_libs",
+    srcs = glob(["include/*.cpp"]),
+    hdrs = glob(["include/*.hpp"]),
+)
+
+cc_binary(
+    name = "policy_evaluation",
+    srcs = [
+        "grid_world.cpp",
+        "policy_evaluation.cpp",
+    ],
+    linkstatic = False,
+    visibility = ["//visibility:public"],
+    deps = [":rl_libs"],
+)
+
+cc_binary(
+    name = "policy_improvement",
+    srcs = [
+        "grid_world.cpp",
+        "policy_improvement.cpp",
+    ],
+    linkstatic = False,
+    visibility = ["//visibility:public"],
+    deps = [":rl_libs"],
+)
